@@ -1,9 +1,10 @@
 #include "../src/adapters/Console.cpp"
-#include "../src/application/useCases/TurnOnAllLEDsUseCase.cpp"
+#include "../src/application/useCases/ChangeColorUseCase.cpp"
 
 int main() {
     Console console;
-    TurnOnAllLEDsUseCase usecase(console);
-    usecase.execute();
+    ChangeColorUseCase usecase(console);
+    const ChangeColorUseCaseDto dto = ChangeColorUseCaseDto::from(255, 0, 0);
+    usecase.execute(dto);
     return 0;
 };
