@@ -1,10 +1,9 @@
 #include "../src/adapters/Console.cpp"
+#include "../src/application/useCases/TurnOnAllLEDsUseCase.cpp"
 
 int main() {
     Console console;
-    const std::string input = console.prompt("hello");
-    console.write(input);
-    console.writeError(input);
-    console.inform(input);
+    TurnOnAllLEDsUseCase usecase(console);
+    usecase.execute();
     return 0;
 };
