@@ -1,13 +1,19 @@
+#include <bitset>
 #include "../dtos/ChangeColorUseCaseDto.h"
+#include "../../ports/IConsole.h"
 
 class ChangeColorUseCase {
     public:
-    ChangeColorUseCase(IConsole& console): console(console){}
+        ChangeColorUseCase(IConsole& console): console(console){}
         void execute(ChangeColorUseCaseDto dto) {
-            console.write(std::to_string(dto.getRed()) + " " + std::to_string(dto.getGreen()) + " " + std::to_string(dto.getBlue()));
-        }
+            int sum = dto.getRed() | dto.getGreen();
+            console.inform(convertToBit(dto.getRed())); 
+            console.inform(convertToBit(dto.getGreen())); 
+            console.inform(convertToBit(sum));            }
 
     private:
         IConsole& console;
-
+        std::string convertToBit(int value) {
+            return std::bitset<8>(value).to_string();
+        }
 };

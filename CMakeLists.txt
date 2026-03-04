@@ -20,7 +20,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 # Step 4: Add your test executable
-add_executable(tests src/application/useCases/hello_test.cpp)
+add_executable(tests src/application/useCases/ChangeColorUseCaseSpec.cpp)
 
 # Step 5: Link with GoogleTest
 target_link_libraries(tests GTest::gtest_main)
