@@ -5,8 +5,7 @@ all:
 	cmake --build build
 
 test: all
-	cd build && ctest
-	-rm -rf build
+	cd build && ctest --output-on-failure
 
 clean:
-	-rm -rf build
+	-rm -rf buildcmake --build build
