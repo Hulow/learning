@@ -1,45 +1,47 @@
 cmake_minimum_required(VERSION 3.14)
 project(learning)
 
+# -------------------------
+# Project Settings
+# -------------------------
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# -------------------------
+# External dependencies
+# -------------------------
 include(FetchContent)
-
-# GoogleTest
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
 )
 FetchContent_MakeAvailable(googletest)
-
 enable_testing()
 
-# Libraries
-add_library(domain src/domain/Color.cpp)
-target_include_directories(domain PUBLIC src/domain)
+# -------------------------
+# Project Libraries
+# -------------------------
+add_subdirectory(src/domain)
+add_subdirectory(src/application/useCases)
+add_subdirectory(src/adapters)
 
-add_library(application src/application/useCases/ChangeColorUseCase.cpp)
-target_include_directories(application PUBLIC src/application/useCases)
-target_link_libraries(application PUBLIC domain)
-
-add_library(adapters src/adapters/Console.cpp)
-target_include_directories(adapters PUBLIC src/adapters)
-
-# Main application
+# -------------------------
+# Main Application
+# -------------------------
 add_executable(app app/main.cpp)
 target_link_libraries(app
     application
     adapters
 )
 
-# Test executable
+# -------------------------
+# Unit Tests
+# -------------------------
 add_executable(tests src/application/useCases/ChangeColorUseCaseSpec.cpp)
 target_link_libraries(tests
     application
     adapters
     GTest::gtest_main
 )
-
 include(GoogleTest)
 gtest_discover_tests(tests)
