@@ -6,7 +6,7 @@
 TEST(ChangeColorUseCase, ShouldChangeColor) {
    SCOPED_TRACE("Given a color to change");
     ConsoleMock console ;
-    ChangeColorUseCase usecase(console);
+     ChangeColorUseCase usecase(console);
     {
         SCOPED_TRACE("When the use case is executed");
         ChangeColorUseCaseDto dto = ChangeColorUseCaseDto::from(200, 100, 50);
