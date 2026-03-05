@@ -12,10 +12,11 @@ class Color {
     public: 
         static Color from(uint8_t red, uint8_t green, uint8_t blue);
         uint8_t getRed();
-        uint8_t getGreen();
-        uint8_t getBlue();
-        std::bitset<8> convertRedtoBit();
-        std::bitset<8> convertGreentoBit();
-        std::bitset<8> convertBluetoBit();
+        std::bitset<8> redtoBit();
+        std::bitset<8> greentoBit();
+        void maskRedColor(std::bitset<8> value);
+        uint8_t bitToColor(std::bitset<8> color);
+        uint8_t redToInt();
+
     };
 

@@ -1,3 +1,3 @@
-add_library(application ChangeColorUseCase.cpp)
+add_library(application MaskColorUseCase.cpp)
 target_include_directories(application PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(application PUBLIC domain)
