@@ -2,23 +2,23 @@
 #include <cstdint> 
 #include <bitset>
 
-Color::Color(uint8_t red, uint8_t green, uint8_t blue): _red(red), _green(green), _blue(blue) {};
+Color::Color(uint8_t color): _color(color) {};
 
-Color Color::from(uint8_t red, uint8_t green, uint8_t blue) {
-    return Color(red, green, blue);
+Color Color::from(uint8_t color) {
+    return Color(color);
 };
 
 uint8_t Color::getRed() {
-    return this->_red;
+    return this->_color;
 };
 
 std::bitset<8> Color::redtoBit() {
-    return std::bitset<8>(this->_red);
+    return std::bitset<8>(this->_color);
 };
 
 void Color::maskRedColor(std::bitset<8> value) {
      std::bitset<8> redBits = redtoBit(); 
-    this->_red = bitToColor(redBits & value);
+    this->_color = bitToColor(redBits & value);
 };
 
 uint8_t Color::bitToColor(std::bitset<8> color)  {
@@ -26,6 +26,6 @@ uint8_t Color::bitToColor(std::bitset<8> color)  {
 };
 
 uint8_t Color::redToInt()  {
-    return static_cast<uint8_t>(this->_red);
+    return static_cast<uint8_t>(this->_color);
 };
 

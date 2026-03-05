@@ -10,7 +10,7 @@ class MaskColorUseCase {
         MaskColorUseCase(IConsole& console): console(console){}
         std::tuple<uint8_t, std::bitset<8>, std::bitset<8>, std::bitset<8>, uint8_t>
         execute(MaskColorUseCaseDto dto) {
-            Color color =  Color::from(dto.getRed(), dto.getGreen(), dto.getBlue());
+            Color color =  Color::from(dto.getRed());
             uint8_t currentRed = color.getRed();
             std::bitset<8> currentRedBits = color.redtoBit();
 

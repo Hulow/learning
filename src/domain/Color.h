@@ -4,13 +4,11 @@
 
 class Color {
     private: 
-        uint8_t _red;
-        uint8_t _green;
-        uint8_t _blue;
-        Color(uint8_t red, uint8_t green, uint8_t blue);
+        uint8_t _color;
+        Color(uint8_t color);
 
     public: 
-        static Color from(uint8_t red, uint8_t green, uint8_t blue);
+        static Color from(uint8_t color);
         uint8_t getRed();
         std::bitset<8> redtoBit();
         std::bitset<8> greentoBit();
