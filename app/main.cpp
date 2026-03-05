@@ -1,11 +1,11 @@
 #include "../src/adapters/Console.h"
-#include "../src/application/useCases/BitwiseOperators/OrUseCase.h"
+#include "../src/application/useCases/BitwiseOperators/NotUseCase.h"
 #include <bitset>
 #include <iostream>
 
 int main() {
     Console console;
-    OrUseCase usecase(console);
+    NotUseCase usecase(console);
     const UseCaseDto dto = UseCaseDto::from(250, std::bitset<8>(0b00000111));
     auto [currentColor, currentColorBits, maskingColorBits, newColorBits, newColor] = usecase.execute(dto);
 

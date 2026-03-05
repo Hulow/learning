@@ -13,6 +13,7 @@ class Color {
         std::bitset<8> colorToBits();
         void maskColorWithAndOperator(std::bitset<8> value);
         void maskColorWithOrOperator(std::bitset<8> value);
+        void maskColorWithNotOperator(std::bitset<8> value);
         uint8_t bitToColor(std::bitset<8> color);
     };
 

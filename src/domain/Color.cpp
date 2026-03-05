@@ -26,6 +26,11 @@ void Color::maskColorWithOrOperator(std::bitset<8> value) {
     this->_color = bitToColor(redBits | value);
 };
 
+void Color::maskColorWithNotOperator(std::bitset<8> value) {
+     std::bitset<8> redBits = colorToBits(); 
+    this->_color = bitToColor(redBits &~ value);
+};
+
 uint8_t Color::bitToColor(std::bitset<8> color)  {
     return color.to_ulong();
 };

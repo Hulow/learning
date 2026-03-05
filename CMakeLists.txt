@@ -37,7 +37,11 @@ target_link_libraries(app
 # -------------------------
 # Unit Tests
 # -------------------------
-add_executable(tests src/application/useCases/BitwiseOperators/AndUseCaseSpec.cpp src/application/useCases/BitwiseOperators/OrUseCaseSpec.cpp)
+add_executable(tests 
+    src/application/useCases/BitwiseOperators/AndUseCaseSpec.cpp 
+    src/application/useCases/BitwiseOperators/OrUseCaseSpec.cpp
+    src/application/useCases/BitwiseOperators/NotUseCaseSpec.cpp
+)
 
 target_link_libraries(tests
     application
