@@ -3,7 +3,7 @@
 
 #include "../../adapters/ConsoleMock.h"
 #include "../dtos/MaskColorUseCaseDto.h"
-#include "./MaskColorUseCase.cpp"
+#include "./AndUseCase.cpp"
 
 struct MaskTestCase {
     uint8_t currentColor;
@@ -72,10 +72,10 @@ MaskTestCase tests[] = {
     },
 };
 
-TEST(MaskColorUseCase, ShouldChangeColor) {
+TEST(AndUseCase, ShouldChangeColor) {
    SCOPED_TRACE("Given a color to Mask");
     ConsoleMock console ;
-     MaskColorUseCase usecase(console);
+     AndUseCase usecase(console);
     {
         SCOPED_TRACE("When the color is masked");
         for (const auto& test : tests) {

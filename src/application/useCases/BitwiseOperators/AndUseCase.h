@@ -11,11 +11,11 @@ struct MaskColorResult {
     uint8_t newColor;
 };
 
-class MaskColorUseCase {
+class AndUseCase {
     private:
         IConsole& _console;
 
     public:
-        MaskColorUseCase(IConsole& _console);
+        AndUseCase(IConsole& _console);
         MaskColorResult execute(MaskColorUseCaseDto dto);
 };

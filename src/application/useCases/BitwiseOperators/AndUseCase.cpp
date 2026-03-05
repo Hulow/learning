@@ -2,14 +2,14 @@
 #include <tuple>
 #include <iostream>
 
-#include "MaskColorUseCase.h"
+#include "AndUseCase.h"
 #include "../dtos/MaskColorUseCaseDto.h"
 #include "../../ports/IConsole.h"
 #include "../../domain/Color.h"
 
-MaskColorUseCase::MaskColorUseCase(IConsole& console) : _console(console){};
+AndUseCase::AndUseCase(IConsole& console) : _console(console){};
 
-MaskColorResult MaskColorUseCase::execute(MaskColorUseCaseDto dto) {
+MaskColorResult AndUseCase::execute(MaskColorUseCaseDto dto) {
     Color color =  Color::from(dto.getColor());
     uint8_t currentColor = color.getColor();
     std::bitset<8> currentColorBits = color.colorToBits();

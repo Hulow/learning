@@ -1,11 +1,11 @@
 #include "../src/adapters/Console.h"
-#include "../src/application/useCases/BitwiseOperators/MaskColorUseCase.h"
+#include "../src/application/useCases/BitwiseOperators/AndUseCase.h"
 #include <bitset>
 #include <iostream>
 
 int main() {
     Console console;
-    MaskColorUseCase usecase(console);
+    AndUseCase usecase(console);
     const MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, std::bitset<8>(0b11111111));
     auto [currentColor, currentColorBits, maskingColorBits, newColorBits, newColor] = usecase.execute(dto);
 
