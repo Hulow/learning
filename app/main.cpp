@@ -1,5 +1,5 @@
 #include "../src/adapters/Console.h"
-#include "../src/application/useCases/MaskColorUseCase.h"
+#include "../src/application/useCases/BitwiseOperators/MaskColorUseCase.h"
 #include <bitset>
 #include <iostream>
 

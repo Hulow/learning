@@ -9,7 +9,7 @@
 
 MaskColorUseCase::MaskColorUseCase(IConsole& console) : _console(console){};
 
-std::tuple<uint8_t, std::bitset<8>, std::bitset<8>, std::bitset<8>, uint8_t> MaskColorUseCase::execute(MaskColorUseCaseDto dto) {
+MaskColorResult MaskColorUseCase::execute(MaskColorUseCaseDto dto) {
     Color color =  Color::from(dto.getColor());
     uint8_t currentColor = color.getColor();
     std::bitset<8> currentColorBits = color.colorToBits();
@@ -20,5 +20,11 @@ std::tuple<uint8_t, std::bitset<8>, std::bitset<8>, std::bitset<8>, uint8_t> Mas
     std::bitset<8> newColorBits = color.colorToBits();
     uint8_t newColor = color.getColor();
     
-    return std::make_tuple(currentColor, currentColorBits, maskingColorBits, newColorBits, newColor);
+    return MaskColorResult{
+        currentColor,
+        currentColorBits,
+        maskingColorBits,
+        newColorBits,
+        newColor
+    };
 };

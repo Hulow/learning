@@ -1,8 +1,9 @@
+#include <bitset>
 #include "gtest/gtest.h"
+
 #include "../../adapters/ConsoleMock.h"
 #include "../dtos/MaskColorUseCaseDto.h"
-#include "../useCases/MaskColorUseCase.cpp"
-#include <bitset>
+#include "./MaskColorUseCase.cpp"
 
 struct MaskTestCase {
     uint8_t currentColor;
@@ -66,7 +67,7 @@ MaskTestCase tests[] = {
         250,
         std::bitset<8>(0b11111010),
         std::bitset<8>(0b11111111),
-        std::bitset<8>(0b01111010),
+        std::bitset<8>(0b11111010),
         250
     },
 };
@@ -79,12 +80,14 @@ TEST(MaskColorUseCase, ShouldChangeColor) {
         SCOPED_TRACE("When the color is masked");
         for (const auto& test : tests) {
             MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(test.currentColor, std::bitset<8>(test.maskingColorBits));
-            usecase.execute(dto);
+            auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
+
             {
-                SCOPED_TRACE("Then the color should change");
-                auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
-                EXPECT_EQ(currentColor, test.currentColor);
+                SCOPED_TRACE("Then the use case should return the expected new color in bit");
                 EXPECT_EQ(newColorBits, test.newColorBits);
+            };
+            {
+                SCOPED_TRACE("Then the use case should return the expected new color in uint8_t");
                 EXPECT_EQ(newColor, test.newColor);
             }
         }

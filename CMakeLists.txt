@@ -37,7 +37,7 @@ target_link_libraries(app
 # -------------------------
 # Unit Tests
 # -------------------------
-add_executable(tests src/application/useCases/MaskColorUseCaseSpec.cpp)
+add_executable(tests src/application/useCases/BitwiseOperators/MaskColorUseCaseSpec.cpp)
 target_link_libraries(tests
     application
     adapters
