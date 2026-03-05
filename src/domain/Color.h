@@ -1,5 +1,6 @@
 #pragma once
 #include <cstdint> 
+#include <bitset>
 
 class Color {
     private: 
@@ -13,5 +14,8 @@ class Color {
         uint8_t getRed();
         uint8_t getGreen();
         uint8_t getBlue();
+        std::bitset<8> convertRedtoBit();
+        std::bitset<8> convertGreentoBit();
+        std::bitset<8> convertBluetoBit();
     };
 

@@ -8,12 +8,9 @@ class ChangeColorUseCase {
         ChangeColorUseCase(IConsole& console): console(console){}
         void execute(ChangeColorUseCaseDto dto) {
             Color color =  Color::from(dto.getRed(), dto.getGreen(), dto.getBlue());
-            console.inform(convertToBit(color.getBlue()));      
+            std::bitset bitColor = color.convertBluetoBit();
         }
 
     private:
         IConsole& console;
-        std::string convertToBit(uint8_t value) {
-            return std::bitset<8>(value).to_string();
-        }
 };

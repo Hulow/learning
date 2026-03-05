@@ -1,5 +1,6 @@
 #include "Color.h"
 #include <cstdint> 
+#include <bitset>
 
 Color::Color(uint8_t red, uint8_t green, uint8_t blue): _red(red), _green(green), _blue(blue) {};
 
@@ -17,4 +18,16 @@ uint8_t Color::getGreen() {
 
 uint8_t Color::getBlue() {
     return this->_blue;
+};
+
+std::bitset<8> Color::convertRedtoBit() {
+    return std::bitset<8>(this->_red);
+};
+
+std::bitset<8> Color::convertGreentoBit() {
+    return std::bitset<8>(this->_green);
+};
+
+std::bitset<8> Color::convertBluetoBit() {
+    return std::bitset<8>(this->_blue);
 };
