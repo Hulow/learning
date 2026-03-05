@@ -1,6 +1,7 @@
-#include "../src/adapters/Console.cpp"
+#include "../src/adapters/Console.h"
 #include "../src/application/useCases/MaskColorUseCase.cpp"
 #include <bitset>
+#include <iostream>
 
 int main() {
     Console console;

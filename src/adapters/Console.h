@@ -1,4 +1,5 @@
 #pragma once
+#include <string> 
 #include "../ports/IConsole.h"
 
 class Console: public IConsole {
