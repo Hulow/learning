@@ -3,13 +3,13 @@
 #include <iostream>
 
 #include "AndUseCase.h"
-#include "../dtos/MaskColorUseCaseDto.h"
+#include "../dtos/UseCaseDto.h"
 #include "../../ports/IConsole.h"
 #include "../../domain/Color.h"
 
 AndUseCase::AndUseCase(IConsole& console) : _console(console){};
 
-MaskColorResult AndUseCase::execute(MaskColorUseCaseDto dto) {
+MaskColorResult AndUseCase::execute(UseCaseDto dto) {
     Color color =  Color::from(dto.getColor());
     uint8_t currentColor = color.getColor();
     std::bitset<8> currentColorBits = color.colorToBits();

@@ -2,7 +2,7 @@
 #include "gtest/gtest.h"
 
 #include "../../adapters/ConsoleMock.h"
-#include "../dtos/MaskColorUseCaseDto.h"
+#include "../dtos/UseCaseDto.h"
 #include "./AndUseCase.cpp"
 
 struct MaskTestCase {
@@ -79,7 +79,7 @@ TEST(AndUseCase, ShouldChangeColor) {
     {
         SCOPED_TRACE("When the color is masked");
         for (const auto& test : tests) {
-            MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(test.currentColor, std::bitset<8>(test.maskingColorBits));
+            UseCaseDto dto = UseCaseDto::from(test.currentColor, std::bitset<8>(test.maskingColorBits));
             auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
 
             {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../ports/IConsole.h"
-#include "../dtos/MaskColorUseCaseDto.h"
+#include "../dtos/UseCaseDto.h"
 
 struct MaskColorResult {
     uint8_t currentColor;
@@ -17,5 +17,5 @@ class AndUseCase {
 
     public:
         AndUseCase(IConsole& _console);
-        MaskColorResult execute(MaskColorUseCaseDto dto);
+        MaskColorResult execute(UseCaseDto dto);
 };
