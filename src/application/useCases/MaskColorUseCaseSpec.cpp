@@ -4,18 +4,89 @@
 #include "../useCases/MaskColorUseCase.cpp"
 #include <bitset>
 
+struct MaskTestCase {
+    uint8_t currentColor;
+    std::bitset<8> currentColorBits;
+    std::bitset<8> maskingColorBits;
+    std::bitset<8> newColorBits;
+    uint8_t newColor;
+};
+
+MaskTestCase tests[] = {
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00000001),
+        std::bitset<8>(0b00000000),
+        0
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00000011),
+        std::bitset<8>(0b00000010),
+        2
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00000111),
+        std::bitset<8>(0b00000010),
+        2
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00001111),
+        std::bitset<8>(0b00001010),
+        10
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00011111),
+        std::bitset<8>(0b00011010),
+        26
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b00111111),
+        std::bitset<8>(0b00111010),
+        58
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b01111111),
+        std::bitset<8>(0b01111010),
+        122
+    },
+    {
+        250,
+        std::bitset<8>(0b11111010),
+        std::bitset<8>(0b11111111),
+        std::bitset<8>(0b01111010),
+        250
+    },
+};
+
 TEST(MaskColorUseCase, ShouldChangeColor) {
    SCOPED_TRACE("Given a color to Mask");
     ConsoleMock console ;
      MaskColorUseCase usecase(console);
     {
         SCOPED_TRACE("When the color is masked");
-        MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, std::bitset<8>(0b00110010));
-        usecase.execute(dto);
-        {
-            SCOPED_TRACE("Then the color should be darker");
-            auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
-            EXPECT_EQ(currentColor, 250);
+        for (const auto& test : tests) {
+            MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(test.currentColor, std::bitset<8>(test.maskingColorBits));
+            usecase.execute(dto);
+            {
+                SCOPED_TRACE("Then the color should change");
+                auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
+                EXPECT_EQ(currentColor, test.currentColor);
+                EXPECT_EQ(newColorBits, test.newColorBits);
+                EXPECT_EQ(newColor, test.newColor);
+            }
         }
     }
-}
+};

@@ -24,8 +24,3 @@ void Color::maskColor(std::bitset<8> value) {
 uint8_t Color::bitToColor(std::bitset<8> color)  {
     return color.to_ulong();
 };
-
-uint8_t Color::colorToInt()  {
-    return static_cast<uint8_t>(this->_color);
-};
-

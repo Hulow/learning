@@ -13,6 +13,5 @@ class Color {
         std::bitset<8> colorToBits();
         void maskColor(std::bitset<8> value);
         uint8_t bitToColor(std::bitset<8> color);
-        uint8_t colorToInt();
     };
 

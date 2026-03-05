@@ -6,12 +6,12 @@
 int main() {
     Console console;
     MaskColorUseCase usecase(console);
-    const MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, std::bitset<8>(0b00110010));
-    auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
+    const MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, std::bitset<8>(0b11111111));
+    auto [currentColor, currentColorBits, maskingColorBits, newColorBits, newColor] = usecase.execute(dto);
 
     std::cout << std::to_string(currentColor) << std::endl;
     std::cout << currentColorBits.to_string() << std::endl;
-    std::cout <<  maskingColor.to_string() << std::endl;
+    std::cout <<  maskingColorBits.to_string() << std::endl;
     std::cout <<  newColorBits.to_string() << std::endl;
     std::cout <<  std::to_string(newColor) << std::endl;
 
