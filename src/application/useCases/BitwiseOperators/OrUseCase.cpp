@@ -2,25 +2,25 @@
 #include <tuple>
 #include <iostream>
 
-#include "AndUseCase.h"
+#include "OrUseCase.h"
 #include "../dtos/UseCaseDto.h"
 #include "../../ports/IConsole.h"
 #include "../../domain/Color.h"
 
-AndUseCase::AndUseCase(IConsole& console) : _console(console){};
+OrUseCase::OrUseCase(IConsole& console) : _console(console){};
 
-MaskColorResult AndUseCase::execute(UseCaseDto dto) {
+OrUseCaseResult OrUseCase::execute(UseCaseDto dto) {
     Color color =  Color::from(dto.getColor());
     uint8_t currentColor = color.getColor();
     std::bitset<8> currentColorBits = color.colorToBits();
 
     std::bitset<8> maskingColorBits = dto.getMaskingValue();
-    color.maskColorWithAndOperator(dto.getMaskingValue());
+    color.maskColorWithOrOperator(dto.getMaskingValue());
 
     std::bitset<8> newColorBits = color.colorToBits();
     uint8_t newColor = color.getColor();
     
-    return MaskColorResult{
+    return OrUseCaseResult{
         currentColor,
         currentColorBits,
         maskingColorBits,

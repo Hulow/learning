@@ -1,12 +1,12 @@
 #include "../src/adapters/Console.h"
-#include "../src/application/useCases/BitwiseOperators/AndUseCase.h"
+#include "../src/application/useCases/BitwiseOperators/OrUseCase.h"
 #include <bitset>
 #include <iostream>
 
 int main() {
     Console console;
-    AndUseCase usecase(console);
-    const UseCaseDto dto = UseCaseDto::from(250, std::bitset<8>(0b11111111));
+    OrUseCase usecase(console);
+    const UseCaseDto dto = UseCaseDto::from(250, std::bitset<8>(0b00000111));
     auto [currentColor, currentColorBits, maskingColorBits, newColorBits, newColor] = usecase.execute(dto);
 
     std::cout << std::to_string(currentColor) << std::endl;

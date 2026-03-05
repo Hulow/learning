@@ -3,9 +3,9 @@
 
 #include "../../adapters/ConsoleMock.h"
 #include "../dtos/UseCaseDto.h"
-#include "./AndUseCase.h"
+#include "./OrUseCase.h"
 
-struct AndTestCase {
+struct OrTestCase {
     uint8_t currentColor;
     std::bitset<8> currentColorBits;
     std::bitset<8> maskingColorBits;
@@ -13,72 +13,44 @@ struct AndTestCase {
     uint8_t newColor;
 };
 
-AndTestCase andTests[] = {
+OrTestCase orTests[] = {
     {
         250,
         std::bitset<8>(0b11111010),
         std::bitset<8>(0b00000001),
-        std::bitset<8>(0b00000000),
-        0
+        std::bitset<8>(0b11111011),
+        251
     },
     {
         250,
         std::bitset<8>(0b11111010),
         std::bitset<8>(0b00000011),
-        std::bitset<8>(0b00000010),
-        2
+        std::bitset<8>(0b11111011),
+        251
     },
     {
         250,
         std::bitset<8>(0b11111010),
         std::bitset<8>(0b00000111),
-        std::bitset<8>(0b00000010),
-        2
+        std::bitset<8>(0b11111111),
+        255
     },
     {
         250,
         std::bitset<8>(0b11111010),
         std::bitset<8>(0b00001111),
-        std::bitset<8>(0b00001010),
-        10
-    },
-    {
-        250,
-        std::bitset<8>(0b11111010),
-        std::bitset<8>(0b00011111),
-        std::bitset<8>(0b00011010),
-        26
-    },
-    {
-        250,
-        std::bitset<8>(0b11111010),
-        std::bitset<8>(0b00111111),
-        std::bitset<8>(0b00111010),
-        58
-    },
-    {
-        250,
-        std::bitset<8>(0b11111010),
-        std::bitset<8>(0b01111111),
-        std::bitset<8>(0b01111010),
-        122
-    },
-    {
-        250,
-        std::bitset<8>(0b11111010),
         std::bitset<8>(0b11111111),
-        std::bitset<8>(0b11111010),
-        250
+        255
     },
 };
 
-TEST(AndUseCase, AndUseCase) {
+TEST(OrUseCase, OrUseCase) {
    SCOPED_TRACE("Given a color to update");
     ConsoleMock console ;
-     AndUseCase usecase(console);
+     OrUseCase usecase(console);
     {
-        SCOPED_TRACE("When the use case is AND");
-        for (const auto& test : andTests) {
+        SCOPED_TRACE("When the use case is OR");
+        for (const auto& test : orTests) {
             UseCaseDto dto = UseCaseDto::from(test.currentColor, std::bitset<8>(test.maskingColorBits));
             auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
 

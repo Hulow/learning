@@ -16,9 +16,14 @@ std::bitset<8> Color::colorToBits() {
     return std::bitset<8>(this->_color);
 };
 
-void Color::maskColor(std::bitset<8> value) {
+void Color::maskColorWithAndOperator(std::bitset<8> value) {
      std::bitset<8> redBits = colorToBits(); 
     this->_color = bitToColor(redBits & value);
+};
+
+void Color::maskColorWithOrOperator(std::bitset<8> value) {
+     std::bitset<8> redBits = colorToBits(); 
+    this->_color = bitToColor(redBits | value);
 };
 
 uint8_t Color::bitToColor(std::bitset<8> color)  {
