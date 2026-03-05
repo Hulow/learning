@@ -3,27 +3,17 @@
 
 class MaskColorUseCaseDto {
     private:
-        uint8_t _red;
-        uint8_t _green;
-        uint8_t _blue;
+        uint8_t _color;
         std::bitset<8> _maskingValue;
-        MaskColorUseCaseDto(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::bitset<8> maskingValue): _red(red), _green(green), _blue(blue), _maskingValue(maskingValue) {}
+        MaskColorUseCaseDto(std::uint8_t color, std::bitset<8> maskingValue): _color(color), _maskingValue(maskingValue) {}
 
     public:
-        static MaskColorUseCaseDto from(std::uint8_t red, std::uint8_t green, std::uint8_t blue, std::bitset<8> maskingValue) {
-            return MaskColorUseCaseDto(red, green, blue, maskingValue);
+        static MaskColorUseCaseDto from(std::uint8_t color, std::bitset<8> maskingValue) {
+            return MaskColorUseCaseDto(color, maskingValue);
         }
     
-        uint8_t getRed() {
-            return _red;
-        }
-
-        uint8_t getGreen() {
-            return _green;
-        }
-
-        uint8_t getBlue() {
-            return _blue;
+        uint8_t getColor() {
+            return _color;
         }
 
         std::bitset<8> getMaskingValue() {

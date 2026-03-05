@@ -10,11 +10,12 @@ TEST(MaskColorUseCase, ShouldChangeColor) {
      MaskColorUseCase usecase(console);
     {
         SCOPED_TRACE("When the color is masked");
-        MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, 0, 0, std::bitset<8>(0b00110010));
+        MaskColorUseCaseDto dto = MaskColorUseCaseDto::from(250, std::bitset<8>(0b00110010));
         usecase.execute(dto);
         {
             SCOPED_TRACE("Then the color should be darker");
-            // EXPECT_EQ(console.getCalls(), 3);
+            auto [currentColor, currentColorBits, maskingColor, newColorBits, newColor] = usecase.execute(dto);
+            EXPECT_EQ(currentColor, 250);
         }
     }
 }
