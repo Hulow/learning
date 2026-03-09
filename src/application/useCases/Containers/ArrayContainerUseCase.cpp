@@ -5,7 +5,6 @@
 #include "../../ports/IConsole.h"
 #include "../dtos/ContainerDto.h"
 
-
 using namespace std;
 
 ArrayContainerUseCase::ArrayContainerUseCase(IConsole& console): _console(console) {};
@@ -13,12 +12,9 @@ ArrayContainerUseCase::ArrayContainerUseCase(IConsole& console): _console(consol
 void ArrayContainerUseCase::execute(ContainerDto dto) {
     int items = dto.getArrayLength();
     const int count = 10;
-    const string firstArrayName = "FirstAwway";
-
 
     array<int, count> firstArray {};
     // firstArray.fill(items);
-    // firstArray.empty();
 
     _console.inform(firstArray.empty() ? "isEmpty" : "isNotEmpty");
 
@@ -50,9 +46,6 @@ void ArrayContainerUseCase::execute(ContainerDto dto) {
     _console.inform("4-#############");
 
     this->returnReverseOperatorToReverseEnd(firstArray);
-
-
-    // firstArray.back("ccddc");
 };
 
 void ArrayContainerUseCase::printArray(array<int, 10> array) {
