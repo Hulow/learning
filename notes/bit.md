@@ -11,3 +11,8 @@ Operator	Effect on Color (one word)	Explanation
 ~	Inverting	Flip all bits (complement)
 <<	Brighten	Multiply channel value (shift left)
 >>	Dim	Divide channel value (shift right)
+
+
+
+HEXA
+BIT
