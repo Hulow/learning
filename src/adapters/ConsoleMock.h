@@ -1,24 +1,14 @@
 #include "../ports/IConsole.h"
 
+using namespace std;
+
 class ConsoleMock : public IConsole {
     private:
-        int calls = 0;
+        int _calls = 0;
     public:
-        std::string prompt(const std::string message)  {
-            calls++;
-            return "mocked input";
-        };
-        void write(const std::string message)  {
-            calls++;
-        };
-        void writeError(const std::string message)  {
-            calls++;
-        };
-        void inform(const std::string message){
-            calls++;
-        };
-
-        int getCalls() const {
-            return calls;
-        }
+        std::string prompt(string message);
+        void write(string message);
+        void writeError(string message);
+        void inform(string message);
+        int getCalls();
 };

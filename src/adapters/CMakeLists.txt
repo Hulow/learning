@@ -1,2 +1,2 @@
-add_library(adapters Console.cpp)
+add_library(adapters ./Console.cpp ./ConsoleMock.cpp)
 target_include_directories(adapters PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
