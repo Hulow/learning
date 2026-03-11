@@ -49,6 +49,12 @@
 #### command to just run the assembly file (.s)
 - g++ -c main.cpp
 
+### notes
+
+ generate the graphs to a directory
+  - mkdir -p graphs
+  - g++-15 -fdump-tree-all-graph -fgraph-dump-dir=graphs -g main.cpp source.cpp
+
 
 ## Compiler + Assembler
 
@@ -99,3 +105,5 @@ R	Read-only data
 0000000000000018 s ltmp1
 
 memory address - symbol type - symbol name
+
+nice tool to debug linking problem
